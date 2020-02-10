@@ -2077,9 +2077,7 @@ static int ram_save_page(RAMState *rs, PageSearchStatus *pss, bool last_stage)
 
     /* XBZRLE overflow or normal page */
     if (pages == -1) {
-                FILE *fp = fopen("/tmp/ram.log", "a");
-                fprintf(fp,"[log] %ld  - \t %s\n",offset,p);
-                fclose(fp);
+            
         pages = save_normal_page(rs, block, offset, p, send_async);
     }
 
@@ -3526,8 +3524,10 @@ static int ram_save_complete(QEMUFile *f, void *opaque)
         /* flush all remaining blocks regardless of rate limiting */
         while (true) {
             int pages;
-
             pages = ram_find_and_save_block(rs, !migration_in_colo_state());
+                FILE *fp = fopen("/tmp/ram_complete.log", "a");
+                fprintf(fp,"[log] %d  \n",pages);
+                fclose(fp);
             /* no more blocks to sent */
             if (pages == 0) {
                 break;

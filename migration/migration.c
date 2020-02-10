@@ -3168,7 +3168,9 @@ static MigIterateState migration_iteration_run(MigrationState *s)
 
     trace_migrate_pending(pending_size, s->threshold_size,
                           pend_pre, pend_compat, pend_post);
-
+    FILE *fp = fopen("/tmp/migration.log", "a");
+    fprintf(fp,"[log] %ld  - \t %ld\n",pending_size, s->threshold_size);
+     fclose(fp);
     if (pending_size && pending_size >= s->threshold_size) {
         /* Still a significant amount to transfer */
         if (!in_postcopy && pend_pre <= s->threshold_size &&
