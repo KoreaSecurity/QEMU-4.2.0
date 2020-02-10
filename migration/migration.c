@@ -2002,7 +2002,7 @@ void qmp_dirty(Monitor *mon,const char *uri, bool has_blk, bool blk,
     monitor_printf(mon,"[IN] qmp_dirty\n");
     strstart(uri, "exec:", &p);
     monitor_printf(mon,"*p : %s\n",p);
-    //origin fd_start_outgoing_dirty(mon,s, p, &local_err);    
+    //origin fd_start_outgoing_dirty(mon,s, p, &local_err)
     exec_start_outgoing_dirty(mon,s, p, &local_err);
     
 }
