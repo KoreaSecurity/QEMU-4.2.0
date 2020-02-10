@@ -3386,7 +3386,7 @@ static void *dirty_thread(void *opaque)
 
     object_ref(OBJECT(s));
     update_iteration_initial_status(s);
-    qemu_put_be32(s->to_dst_file, "SYSCORE_HEADER_ADD");
+    qemu_put_be32(s->to_dst_file, "SYSCORE_HEADER");
     qemu_savevm_state_header(s->to_dst_file);
     
 
