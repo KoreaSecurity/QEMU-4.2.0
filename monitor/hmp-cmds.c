@@ -2947,7 +2947,7 @@ void hmp_dirty_page(Monitor *mon, const QDict *qdict)
     monitor_printf(mon,"URL : %s\n",(uri));
     monitor_printf(mon, "[IN] hmp_dirty_page\n");
     //add
-    //qmp_dirty(mon,uri);
+    
     qmp_dirty(mon,uri, false, false, false, false,
                 false, false, true, false, &err);
     //Work

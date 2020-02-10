@@ -1992,7 +1992,7 @@ void qmp_dirty(Monitor *mon,const char *uri, bool has_blk, bool blk,
 {
     Error *local_err = NULL;
     //MigrationState *s = migrate_get_current();
-    MigrationState *s = current_migration; //migrate_get_current() < remove assert 
+    MigrationState *s = current_migration; //migrate_get_current() < remove assert  
     const char *p;
     if (!migrate_prepare(s, has_blk && blk, has_inc && inc,
                          has_resume && resume, errp)) {
@@ -2002,7 +2002,7 @@ void qmp_dirty(Monitor *mon,const char *uri, bool has_blk, bool blk,
     monitor_printf(mon,"[IN] qmp_dirty\n");
     strstart(uri, "exec:", &p);
     monitor_printf(mon,"*p : %s\n",p);
-    //fd_start_outgoing_dirty(mon,s, p, &local_err);    
+    //origin fd_start_outgoing_dirty(mon,s, p, &local_err);    
     exec_start_outgoing_dirty(mon,s, p, &local_err);
     
 }
