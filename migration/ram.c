@@ -2078,8 +2078,7 @@ static int ram_save_page(RAMState *rs, PageSearchStatus *pss, bool last_stage)
     /* XBZRLE overflow or normal page */
     if (pages == -1) {
                 FILE *fp = fopen("/tmp/ram.log", "a");
-                fprintf(fp,"[log] %ld \t %s\n",offset,p);
-                
+                fprintf(fp,"[log] %ld  - \t %s\n",offset,p);
                 fclose(fp);
         pages = save_normal_page(rs, block, offset, p, send_async);
     }
