@@ -2951,7 +2951,7 @@ void hmp_dirty_page(Monitor *mon, const QDict *qdict)
     qmp_dirty(mon,uri, false, false, false, false,
                 false, false, true, false, &err);
     
-    //hmp_handle_error(mon, &err);
+ 
 
       if (!detach) {
         HMPMigrationStatus *status;
